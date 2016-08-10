@@ -22,6 +22,10 @@ static BOOL IsPresenting;
 @property (strong, nonatomic) IBOutlet UILabel *lbMessage;
 @property (strong, nonatomic) IBOutlet UIImageView *imgIcon;
 @property (strong, nonatomic) IBOutlet UIImageView *imgShadow;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *topContraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *button;
+
 
 @property (strong, nonatomic) UIView *backgroundBlackView;
 @property (strong, nonatomic) UIImageView *backgroundView;
@@ -105,6 +109,13 @@ static BOOL IsPresenting;
         self.message = message;
         self.alertViewStyle = style;
         
+        if(title==nil){
+            self.heightConstraint.constant=0;
+        }
+        if(message==nil){
+            self.topContraint.constant+=30;
+        }
+        
         if ([delegate conformsToProtocol:@protocol(NZAlertViewDelegate)]) {
             self.delegate = delegate;
         }
@@ -123,10 +134,11 @@ static BOOL IsPresenting;
     }
     
     CGRect viewFrame = self.view.frame;
-    viewFrame.origin.y = -(CGRectGetHeight(self.view.frame) + [self originY]);
+
+    viewFrame.origin.y -= (CGRectGetHeight(self.view.frame));
     
     [UIView animateWithDuration:_animationDuration animations:^{
-        self.frame = viewFrame;
+        self.view.frame = viewFrame;
         self.backgroundView.alpha = 0;
         self.backgroundBlackView.alpha = 0;
     } completion:^(BOOL finished) {
@@ -174,6 +186,7 @@ static BOOL IsPresenting;
     }
     
     self.imgIcon.image = [UIImage imageNamed:path];
+    self.button.imageView.image=[UIImage imageNamed:path];
     self.lbTitle.textColor = color;
     self.lbMessage.textColor = color;
 }
