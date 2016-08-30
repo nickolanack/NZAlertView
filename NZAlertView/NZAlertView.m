@@ -102,6 +102,12 @@ static BOOL IsPresenting;
         UIImageView *imageView=[[UIImageView alloc] initWithImage:_image];
         [self.backgroundView addSubview:imageView];
         [imageView setCenter:self.backgroundView.center];
+        
+        
+        imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+        imageView.layer.shadowOpacity = 0.4;
+        imageView.layer.shadowRadius = 5;
+        imageView.layer.shadowOffset=CGSizeMake(0, 0);
     }
     
 
