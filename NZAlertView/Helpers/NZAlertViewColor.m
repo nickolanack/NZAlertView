@@ -15,17 +15,17 @@
 
 + (UIColor *)errorColor
 {
-    return [UIColor blackColor];
+    return [UIColor whiteColor];
 }
 
 + (UIColor *)infoColor
 {
-    return [UIColor blackColor];
+    return [UIColor whiteColor];
 }
 
 + (UIColor *)successColor
 {
-    return [UIColor blackColor];
+    return [UIColor whiteColor];
 }
 
 @end

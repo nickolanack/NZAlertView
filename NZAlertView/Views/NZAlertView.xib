@@ -31,7 +31,7 @@
                                 <constraint firstAttribute="width" constant="216" id="qfz-jt-43v"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="1"/>
                         </label>
@@ -42,7 +42,7 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="xjv-IO-48l"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="1"/>
                         </label>
@@ -53,8 +53,9 @@
                                 <constraint firstAttribute="width" constant="55" id="Jea-PD-UfD"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-2Y-mgg">
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-2Y-mgg">
                             <rect key="frame" x="21" y="15" width="54" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="54" id="YaB-XU-NhS"/>
                                 <constraint firstAttribute="width" constant="54" id="kVo-Eo-lzR"/>
@@ -68,7 +69,6 @@
                         <constraint firstItem="5UP-2Y-mgg" firstAttribute="top" secondItem="lpJ-UY-REL" secondAttribute="top" constant="15" id="5Dh-KA-XSa"/>
                         <constraint firstItem="nXK-cq-fah" firstAttribute="centerY" secondItem="lpJ-UY-REL" secondAttribute="centerY" id="6ja-Zj-CbA"/>
                         <constraint firstItem="dyE-FE-n9z" firstAttribute="top" secondItem="iP6-EJ-CuC" secondAttribute="bottom" constant="8" id="DE6-p7-2m5"/>
-                        <constraint firstAttribute="width" constant="320" id="Epu-bJ-jPi"/>
                         <constraint firstItem="dyE-FE-n9z" firstAttribute="leading" secondItem="nXK-cq-fah" secondAttribute="trailing" constant="19" id="J51-89-Lhf"/>
                         <constraint firstItem="iP6-EJ-CuC" firstAttribute="top" secondItem="lpJ-UY-REL" secondAttribute="top" constant="14" id="OGE-jD-X0T"/>
                         <constraint firstAttribute="bottom" secondItem="dyE-FE-n9z" secondAttribute="bottom" constant="15" id="Reg-g7-dFx"/>
@@ -76,26 +76,28 @@
                         <constraint firstItem="nXK-cq-fah" firstAttribute="leading" secondItem="lpJ-UY-REL" secondAttribute="leading" constant="20" id="gpI-Go-HfG"/>
                         <constraint firstItem="iP6-EJ-CuC" firstAttribute="leading" secondItem="nXK-cq-fah" secondAttribute="trailing" constant="19" id="iFw-dQ-AKD"/>
                         <constraint firstItem="5UP-2Y-mgg" firstAttribute="leading" secondItem="lpJ-UY-REL" secondAttribute="leading" constant="21" id="nlV-Qx-iyA"/>
-                        <constraint firstAttribute="trailing" secondItem="dyE-FE-n9z" secondAttribute="trailing" constant="10" id="u6a-rl-UXx"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WGg-HG-ckY" userLabel="Image View - Shadow">
                     <rect key="frame" x="0.0" y="84" width="320" height="5"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="320" id="7lA-cp-SXw"/>
                         <constraint firstAttribute="height" constant="5" id="Sdt-b2-wbe"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="lpJ-UY-REL" secondAttribute="trailing" id="C1L-TS-LBH"/>
                 <constraint firstAttribute="trailing" secondItem="lpJ-UY-REL" secondAttribute="trailing" id="Cam-Be-yT2"/>
+                <constraint firstAttribute="trailing" secondItem="WGg-HG-ckY" secondAttribute="trailing" id="CzY-ud-05W"/>
                 <constraint firstItem="lpJ-UY-REL" firstAttribute="top" secondItem="1" secondAttribute="top" id="Fk3-ba-nBb"/>
                 <constraint firstAttribute="bottom" secondItem="WGg-HG-ckY" secondAttribute="bottom" constant="8" id="JZS-4U-a3U"/>
+                <constraint firstItem="lpJ-UY-REL" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Qes-uH-xfI"/>
                 <constraint firstAttribute="trailing" secondItem="WGg-HG-ckY" secondAttribute="trailing" id="eGA-mM-tIi"/>
                 <constraint firstItem="WGg-HG-ckY" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="eyT-ab-lae"/>
                 <constraint firstItem="lpJ-UY-REL" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="mNe-hC-r7f"/>
                 <constraint firstItem="WGg-HG-ckY" firstAttribute="top" secondItem="lpJ-UY-REL" secondAttribute="bottom" id="sRs-PU-R2p"/>
+                <constraint firstItem="WGg-HG-ckY" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="x7A-Ev-J4u"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -39,6 +39,7 @@ typedef void(^NZAlertViewCompletion)(void);
 @property (nonatomic, assign) NZAlertStyle alertViewStyle;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) UIImage *image;
 @property (nonatomic, readonly, getter = isVisible) BOOL visible;
 
 @property (nonatomic, assign) NSString *fontName;
@@ -57,6 +58,12 @@ typedef void(^NZAlertViewCompletion)(void);
 - (id)initWithStyle:(NZAlertStyle)style
               title:(NSString *)title
             message:(NSString *)message
+           delegate:(id)delegate;
+
+- (id)initWithStyle:(NZAlertStyle)style
+              title:(NSString *)title
+            message:(NSString *)message
+            image:(UIImage *)image
            delegate:(id)delegate;
 
 - (void)hide;

@@ -28,7 +28,7 @@ static BOOL IsPresenting;
 
 
 @property (strong, nonatomic) UIView *backgroundBlackView;
-@property (strong, nonatomic) UIImageView *backgroundView;
+@property (strong, nonatomic) UIToolbar *backgroundView;
 @property (strong, nonatomic) NZAlertViewCompletion completion;
 
 - (void)adjustLayout;
@@ -65,8 +65,13 @@ static BOOL IsPresenting;
         [self addSubview:self.view];
         
         frame = [[UIScreen mainScreen] bounds];
-        self.backgroundView = [[UIImageView alloc] initWithFrame:frame];
-        self.backgroundView.backgroundColor = [UIColor clearColor];
+        //self.backgroundView = [[UIImageView alloc] initWithFrame:frame];
+        //self.backgroundView.backgroundColor = [UIColor clearColor];
+        
+        [self initBackground: frame];
+        
+        
+        
         
         self.backgroundBlackView = [[UIView alloc] initWithFrame:frame];
         self.backgroundBlackView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.1f];
@@ -83,6 +88,25 @@ static BOOL IsPresenting;
     return self;
 }
 
+-(void)initBackground:(CGRect) frame{
+    
+    //self.backgroundView = [[UIImageView alloc] initWithFrame:frame];
+    //self.backgroundView.backgroundColor = [UIColor clearColor];
+
+    self.backgroundView = [[UIToolbar alloc] initWithFrame:frame];
+    self.backgroundView.barStyle = UIBarStyleDefault;
+    self.backgroundView.tintColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    
+    
+    if(_image){
+        UIImageView *imageView=[[UIImageView alloc] initWithImage:_image];
+        [self.backgroundView addSubview:imageView];
+        [imageView setCenter:self.backgroundView.center];
+    }
+    
+
+}
+
 #pragma mark -
 #pragma mark - Public initialize methods
 
@@ -95,9 +119,15 @@ static BOOL IsPresenting;
 {
     return [self initWithStyle:style title:title message:message delegate:nil];
 }
-
 - (id)initWithStyle:(NZAlertStyle)style title:(NSString *)title message:(NSString *)message delegate:(id)delegate
 {
+    return [self initWithStyle:style title:title message:message image:nil delegate:nil];
+}
+- (id)initWithStyle:(NZAlertStyle)style title:(NSString *)title message:(NSString *)message image:(UIImage *)image delegate:(id)delegate
+{
+    
+    self.image=image;
+    
     self = [self init];
     
     if (self) {
@@ -108,6 +138,7 @@ static BOOL IsPresenting;
         self.title = title;
         self.message = message;
         self.alertViewStyle = style;
+        
         
         if(title==nil){
             self.heightConstraint.constant=0;
@@ -186,7 +217,9 @@ static BOOL IsPresenting;
     }
     
     self.imgIcon.image = [UIImage imageNamed:path];
-    self.button.imageView.image=[UIImage imageNamed:path];
+    //self.button.imageView.image=[UIImage imageNamed:path];
+    
+    [self.button setImage:[UIImage imageNamed:path] forState:UIControlStateNormal];
     self.lbTitle.textColor = color;
     self.lbMessage.textColor = color;
 }
@@ -233,15 +266,15 @@ static BOOL IsPresenting;
     frame.origin.y = -([self originY] + CGRectGetHeight(self.view.frame));
     self.frame = frame;
 
-    if (self.screenBlurLevel > 0) {
-        UIImage *screenshot = [UIImage screenshot];
-        NSData *imageData = UIImageJPEGRepresentation(screenshot, .0001);
-        UIImage *blurredSnapshot = [[UIImage imageWithData:imageData] blurredImage:_screenBlurLevel];
-
-        self.backgroundView.image = blurredSnapshot;
-    } else {
-        self.backgroundView.image = nil;
-    }
+//    if (self.screenBlurLevel > 0) {
+//        UIImage *screenshot = [UIImage screenshot];
+//        NSData *imageData = UIImageJPEGRepresentation(screenshot, .0001);
+//        UIImage *blurredSnapshot = [[UIImage imageWithData:imageData] blurredImage:_screenBlurLevel];
+//
+//        //self.backgroundView.image = blurredSnapshot;
+//    } else {
+//        //self.backgroundView.image = nil;
+//    }
 
     self.backgroundView.alpha = 0;
     
@@ -252,6 +285,7 @@ static BOOL IsPresenting;
     [[application keyWindow] insertSubview:self atIndex:index];
     [[application keyWindow] insertSubview:self.backgroundBlackView atIndex:index];
     [[application keyWindow] insertSubview:self.backgroundView atIndex:index];
+    
     
     CGRect viewFrame = self.view.frame;
     viewFrame.origin.y = [self originY];
